@@ -682,7 +682,8 @@ public final class BaseLib implements JavaFunction {
 
 		LuaTable packageTable = (LuaTable) callFrame.getEnvironment().rawget("package");
 		String classpath = (String) packageTable.rawget("classpath");
-		
+		if (classpath == null) { classpath = ""; }
+
 		int index = 0;
 		while (index < classpath.length()) {
 			int nextIndex = classpath.indexOf(";", index);

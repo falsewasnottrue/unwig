@@ -285,6 +285,17 @@ public final class LuaPrototype {
 
 //		Done with header, start reading functions
 		LuaPrototype mainPrototype = new LuaPrototype(in, littleEndian, null, size_t);
+
+		System.out.println(mainPrototype.name);
+		System.out.println(mainPrototype.constants.length);
+		for (int i=0; i<mainPrototype.constants.length; i++) {
+			System.out.println(mainPrototype.constants[i]);
+		}
+//		System.out.println(mainPrototype.code.length);
+//		System.out.println(mainPrototype.prototypes.length);
+//		for (int i=0; i<mainPrototype.prototypes.length; i++) {
+//			System.out.println(mainPrototype.prototypes[i].name);
+//		}
 		LuaClosure closure = new LuaClosure(mainPrototype, env);
 		return closure;
 	}

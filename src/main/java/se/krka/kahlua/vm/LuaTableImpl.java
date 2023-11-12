@@ -31,8 +31,8 @@ public final class LuaTableImpl implements LuaTable {
 	private boolean weakKeys, weakValues;
 
 	// Hash part
-	private Object[] keys;
-	private Object[] values;
+	public Object[] keys;
+	public Object[] values;
 	private int[] next;
 	private int freeIndex;
 
