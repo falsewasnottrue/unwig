@@ -1,5 +1,8 @@
-import de.falsewasnottrue.CartridgeFile
-import de.falsewasnottrue.SeekableFile
+import de.falsewasnottrue.file.CartridgeFile
+import de.falsewasnottrue.file.SeekableFile
+import se.krka.kahlua.vm.LuaPrototype
+import se.krka.kahlua.vm.LuaState
+import java.io.ByteArrayInputStream
 import java.io.File
 
 fun main(args: Array<String>) {
@@ -29,11 +32,21 @@ fun main(args: Array<String>) {
         println("iconId ${cf.iconId}")
         println("splashId ${cf.splashId}")
 
-        println("ids:")
-        cf.ids.forEach { print("$it, ") }
+//        println("ids:")
+//        cf.ids.forEach { print("$it, ") }
 
-        println("offsets:")
-        cf.offsets.forEach { print("$it, ") }
+//        println("offsets:")
+//        cf.offsets.forEach { print("$it, ") }
+
+        println("bytecode")
+        val bytecode = cf.bytecode
+        println("  length: ${bytecode.size}")
+
+        val state = LuaState(System.out)
+        val stream = ByteArrayInputStream(bytecode)
+        val luaClosure = LuaPrototype.loadByteCode(stream, state.environment)
+
+        println(luaClosure.env)
     }
 
 }

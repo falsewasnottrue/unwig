@@ -1,4 +1,4 @@
-package de.falsewasnottrue
+package de.falsewasnottrue.file
 
 import java.io.File
 import java.io.RandomAccessFile

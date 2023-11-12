@@ -1,4 +1,4 @@
-package de.falsewasnottrue
+package de.falsewasnottrue.file
 
 class CartridgeFile(private val source: SeekableFile) {
 
